@@ -1,0 +1,13 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+:root {
+  --white: #ffffff;
+  --white-gray: #f1f3f4;
+  --white-shadow: #dadce0;
+  --gray: #5f6368;
+  --blue: #0063e5;
+}
