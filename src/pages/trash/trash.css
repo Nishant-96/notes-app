@@ -1,0 +1,11 @@
+.trash-wrapper {
+  margin-left: 9.9rem;
+  padding: 1rem;
+  display: flex;
+  flex-basis: calc(100vh - 76px);
+  justify-content: center;
+}
+
+.trash-wrapper > h4 {
+  color: var(--gray);
+}

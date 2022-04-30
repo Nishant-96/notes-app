@@ -1,0 +1,48 @@
+.sidenav {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 1rem;
+  gap: 1rem;
+  width: max-content;
+  background-color: var(--white);
+  border-right: 1px solid var(--white-shadow);
+
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  top: 9%;
+  z-index: 4;
+}
+
+.sidenav > a {
+  text-decoration: none;
+}
+
+.sidenav-section {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+}
+
+.sidenav-section > svg,
+.sidenav-section > p {
+  color: var(--gray);
+  font-weight: 450;
+}
+
+.sidenav-section:hover {
+  background-color: var(--white-gray);
+}
+
+@media screen and (max-width: 550px) {
+  .sidenav-section {
+    border-radius: 50%;
+    flex-direction: column;
+  }
+  .sidenav {
+    padding-inline: unset;
+  }
+}

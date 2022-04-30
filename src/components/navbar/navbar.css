@@ -1,0 +1,88 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  box-shadow: inset 0 -1px 0 0 var(--white-shadow);
+  padding-block: 0.5rem;
+  background-color: var(--white);
+
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 5;
+}
+
+.nav-left,
+.nav-center {
+  display: flex;
+  align-items: center;
+}
+
+.nav-left-img {
+  height: 60px;
+}
+
+.nav-left-title {
+  font-size: 22px;
+  color: var(--gray);
+}
+
+.nav-center-input {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 6px;
+  background-color: var(--white-gray);
+  padding: 0.5rem;
+}
+
+.nav-center-input > input {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  font-size: 16px;
+  width: 30rem;
+}
+
+.nav-center-input > svg {
+  color: var(--gray);
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-inline: 0.5rem;
+}
+
+.navigation-button {
+  background-color: var(--blue);
+  color: var(--white);
+  border: none;
+  outline: none;
+  height: 2.5rem;
+  width: 2.5rem;
+}
+
+.navigation-button:hover {
+  filter: none;
+  background-color: transparent;
+  color: var(--blue);
+  transition: 0.5s;
+  border: 1px solid var(--blue);
+}
+
+@media screen and (max-width: 850px) {
+  .nav-center-input {
+    max-width: 18rem;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .nav-center-input {
+    max-width: 10rem;
+  }
+  .nav-left-title {
+    display: none;
+  }
+}
