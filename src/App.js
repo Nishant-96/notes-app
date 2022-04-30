@@ -1,7 +1,7 @@
 import Mockman from "mockman-js";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import { Navbar, SideNav } from "./components";
+import { Navbar } from "./components";
 import {
   Archive,
   Home,
@@ -18,13 +18,6 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      {/* <Notes /> */}
-      {/* <Trash /> */}
-      {/* <Label /> */}
-      {/* <Archive /> */}
-      {/* <Login /> */}
-      {/* <SignUp /> */}
-      {/* <Forgot /> */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/notes" element={<Notes />} />
