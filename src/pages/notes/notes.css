@@ -1,0 +1,72 @@
+.notes {
+  margin-top: 4.75rem;
+}
+
+.note-wrapper {
+  margin-left: 9.9rem;
+  display: flex;
+  flex-basis: calc(100vh - 76px);
+  justify-content: center;
+  padding: 1rem;
+}
+
+.note-input-container {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 3px 5px rgb(0 0 0 / 30%);
+  height: max-content;
+  padding: 1rem 0.5rem;
+  border-radius: 5px;
+}
+
+.note-input-container > input {
+  border: none;
+  outline: none;
+}
+
+.note-input-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.note-input-footer > div {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.note-input-footer > div > svg {
+  color: var(--gray);
+  cursor: pointer;
+}
+
+.note-input-footer > div > svg:hover {
+  background-color: var(--white-gray);
+  border-radius: 999px;
+}
+
+.note-input-footer > div > input {
+  width: 20px;
+  border-radius: 50%;
+  border: 1px solid;
+  cursor: pointer;
+}
+
+.note-input-btn {
+  padding: 0.5rem;
+  cursor: pointer;
+  border-radius: 6px;
+  color: var(--gray);
+  font-weight: 500;
+}
+
+.note-input-btn:hover {
+  background-color: var(--white-gray);
+}
+
+@media screen and (max-width: 550px) {
+  .note-wrapper {
+    margin-left: 93px;
+  }
+}

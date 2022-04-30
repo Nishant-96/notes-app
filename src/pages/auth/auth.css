@@ -1,0 +1,88 @@
+.auth {
+  margin-block: auto;
+}
+.login-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  flex-basis: calc(100vh - 76px);
+}
+
+.login-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: max-content;
+  max-width: 35rem;
+  box-shadow: 0px 0px 0.9rem rgb(0 0 0 / 20%);
+  padding: 2rem;
+  gap: 1rem;
+  border-radius: 4px;
+}
+
+.login-wrapper-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+.login-wrapper-content > label {
+  font-weight: 500;
+  color: var(--gray);
+}
+
+.login-wrapper-content > input {
+  border-radius: 5px;
+  text-align: center;
+  padding: 0.5rem 0;
+  border: 1px solid;
+}
+
+.login-wrapper-content > div {
+  display: flex;
+  gap: 5rem;
+}
+
+.login-wrapper-content > div > a {
+  color: unset;
+  text-decoration: none;
+}
+
+.login-wrapper-content > a {
+  text-align: center;
+  color: unset;
+  text-decoration: none;
+}
+
+.login-content > h3 {
+  color: var(--gray);
+}
+
+.login-content > h4,
+.login-wrapper-content > h4 {
+  text-align: center;
+  color: var(--gray);
+}
+
+.auth-btn {
+  background-color: var(--blue);
+  border: 2px solid var(--blue);
+  color: var(--white);
+}
+
+.auth-btn:hover {
+  filter: unset;
+  transition: all 300ms;
+  color: var(--blue);
+  background-color: var(--white);
+  border: 2px solid var(--blue);
+}
+
+.signup-content {
+  width: 100%;
+}
