@@ -1,7 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../context/auth/auth-context";
 import "./auth.css";
 export function SignUp() {
+  const { signUpHandler } = useAuth();
+  const [userCredentials, setUserCredentials] = useState({
+    userName: "",
+    email: "",
+    password: "",
+    confirmPass: "",
+  });
+  console.log(userCredentials);
   return (
     <div className="notes">
       <div className="login-wrapper">
@@ -14,6 +23,13 @@ export function SignUp() {
               id="username"
               name="username"
               placeholder="Enter your name"
+              value={userCredentials.userName}
+              onChange={(event) =>
+                setUserCredentials({
+                  ...userCredentials,
+                  userName: event.target.value,
+                })
+              }
             />
             <label htmlFor="email">Email:</label>
             <input
@@ -21,6 +37,13 @@ export function SignUp() {
               id="email"
               name="email"
               placeholder="Enter your email"
+              value={userCredentials.email}
+              onChange={(event) =>
+                setUserCredentials({
+                  ...userCredentials,
+                  email: event.target.value,
+                })
+              }
             />
             <label htmlFor="pwd">Password:</label>
             <input
@@ -28,6 +51,13 @@ export function SignUp() {
               id="pwd"
               name="pwd"
               placeholder="Enter Password"
+              value={userCredentials.password}
+              onChange={(event) =>
+                setUserCredentials({
+                  ...userCredentials,
+                  password: event.target.value,
+                })
+              }
             />
             <label htmlFor="confirm-pwd">Confirm Password:</label>
             <input
@@ -35,11 +65,30 @@ export function SignUp() {
               id="confirm-pwd"
               name="confirm-pwd"
               placeholder="Confirm Password"
+              value={userCredentials.confirmPass}
+              onChange={(event) =>
+                setUserCredentials({
+                  ...userCredentials,
+                  confirmPass: event.target.value,
+                })
+              }
             />
             <label>
               <input type="checkbox" />I Accept all terms and Conditions
             </label>
-            <button className="btn btn-primary auth-btn">Sign Up</button>
+            <button
+              className="btn btn-primary auth-btn"
+              onClick={() =>
+                signUpHandler(
+                  userCredentials.email,
+                  userCredentials.userName,
+                  userCredentials.password,
+                  userCredentials.confirmPass
+                )
+              }
+            >
+              Sign Up
+            </button>
             <h4>Already Have an Account ?</h4>
             <Link to="/login">Login</Link>
           </div>

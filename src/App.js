@@ -1,7 +1,7 @@
 import Mockman from "mockman-js";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import { Navbar } from "./components";
+import { Navbar, RequireAuth } from "./components";
 import {
   Archive,
   Home,
@@ -18,12 +18,41 @@ function App() {
   return (
     <div className="App">
       <Navbar />
+      
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/notes" element={<Notes />} />
-        <Route path="/label" element={<Label />} />
-        <Route path="/archive" element={<Archive />} />
-        <Route path="/trash" element={<Trash />} />
+        <Route
+          path="/notes"
+          element={
+            <RequireAuth>
+              <Notes />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/label"
+          element={
+            <RequireAuth>
+              <Label />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/archive"
+          element={
+            <RequireAuth>
+              <Archive />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/trash"
+          element={
+            <RequireAuth>
+              <Trash />
+            </RequireAuth>
+          }
+        />
         <Route path="/login" element={<Login />} />
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/forgot-password" element={<Forgot />} />
