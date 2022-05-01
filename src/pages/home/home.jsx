@@ -1,7 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 import "./home.css";
 export function Home() {
+  const navigate = useNavigate();
+
+  const getStartedHandler = () => {
+    navigate("/notes");
+  };
+
   return (
     <div className="notes">
       <div className="home-wrapper">
@@ -9,9 +16,12 @@ export function Home() {
           <h1>NoteMate</h1>
           <h3>Your digital notebook</h3>
           <p>Capture important ideas and information anywhere.</p>
-          <Link to="/notes">
-            <button className="btn btn-primary home-btn">Get Started</button>
-          </Link>
+          <button
+            className="btn btn-primary home-btn"
+            onClick={getStartedHandler}
+          >
+            Get Started
+          </button>
         </div>
 
         <div className="home-image">
