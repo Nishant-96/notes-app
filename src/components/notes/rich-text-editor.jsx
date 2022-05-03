@@ -19,7 +19,7 @@ export function RichTextEditor() {
 
   return (
     <ReactQuill
-      theme="snow"
+      // theme="snow"
       placeholder="Write Note here..."
       modules={modules}
     />

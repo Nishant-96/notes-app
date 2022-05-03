@@ -5,8 +5,8 @@
   padding: 1rem;
   gap: 1rem;
   width: max-content;
-  background-color: var(--white);
-  border-right: 1px solid var(--white-shadow);
+  background-color: var(--nav-bg-color);
+  border-right: 1px solid var(--nav-box-shadow);
 
   position: fixed;
   left: 0;
@@ -29,12 +29,12 @@
 
 .sidenav-section > svg,
 .sidenav-section > p {
-  color: var(--gray);
+  color: var(--nav-color);
   font-weight: 450;
 }
 
 .sidenav-section:hover {
-  background-color: var(--white-gray);
+  background-color: var(--side-nav-hover);
 }
 
 @media screen and (max-width: 550px) {

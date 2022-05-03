@@ -1,9 +1,9 @@
 .navbar {
   display: flex;
   justify-content: space-between;
-  box-shadow: inset 0 -1px 0 0 var(--white-shadow);
+  box-shadow: inset 0 -1px 0 0 var(--nav-box-shadow);
   padding-block: 0.5rem;
-  background-color: var(--white);
+  background-color: var(--nav-bg-color);
 
   position: fixed;
   left: 0;
@@ -24,7 +24,7 @@
 
 .nav-left-title {
   font-size: 22px;
-  color: var(--gray);
+  color: var(--nav-color);
 }
 
 .nav-center-input {

@@ -10,9 +10,7 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/auth/auth-context";
 
-export function Navbar() {
-  //   will be removed state mangement for dark mode
-  const flager = true;
+export function Navbar({ changeTheme, theme }) {
   const { token, logOutHandler } = useAuth();
   const navigate = useNavigate();
 
@@ -41,8 +39,11 @@ export function Navbar() {
         <button className="btn btn-float navigation-button">
           <FilterAltIcon />
         </button>
-        <button className="btn btn-float navigation-button">
-          {flager ? <DarkModeIcon /> : <LightModeIcon />}
+        <button
+          className="btn btn-float navigation-button"
+          onClick={() => changeTheme()}
+        >
+          {theme === "light-mode" ? <DarkModeIcon /> : <LightModeIcon />}
         </button>
         <button
           className="btn btn-float navigation-button"

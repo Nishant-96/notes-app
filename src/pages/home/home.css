@@ -29,7 +29,7 @@
   filter: unset;
   transition: all 300ms;
   color: var(--blue);
-  background-color: var(--white);
+  background-color: transparent;
   border: 2px solid var(--blue);
 }
 
