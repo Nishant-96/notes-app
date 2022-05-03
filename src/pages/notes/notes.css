@@ -1,5 +1,8 @@
 .notes {
   margin-top: 4.75rem;
+  flex-grow: 1;
+  background-color: var(--nav-bg-color);
+  color: var(--body-color);
 }
 
 .note-wrapper {
@@ -13,7 +16,7 @@
 .note-input-container {
   display: flex;
   flex-direction: column;
-  box-shadow: 0 3px 5px rgb(0 0 0 / 30%);
+  box-shadow: var(--note-input-shadow);
   height: max-content;
   padding: 1rem 0.5rem;
   border-radius: 5px;
@@ -22,6 +25,9 @@
 .note-input-container > input {
   border: none;
   outline: none;
+  background-color: transparent;
+  color: var(--body-color);
+  font-size: 1rem;
 }
 
 .note-input-footer {
@@ -37,18 +43,18 @@
 }
 
 .note-input-footer > div > svg {
-  color: var(--gray);
+  color: var(--nav-color);
   cursor: pointer;
 }
 
 .note-input-footer > div > svg:hover {
-  background-color: var(--white-gray);
+  background-color: var(--side-nav-hover);
   border-radius: 999px;
 }
 
 .note-input-footer > div > input {
-  width: 20px;
-  border-radius: 50%;
+  width: 2rem;
+  background-color: transparent;
   border: 1px solid;
   cursor: pointer;
 }
@@ -57,16 +63,17 @@
   padding: 0.5rem;
   cursor: pointer;
   border-radius: 6px;
-  color: var(--gray);
+  color: var(--nav-color);
   font-weight: 500;
 }
 
 .note-input-btn:hover {
-  background-color: var(--white-gray);
+  color: var(--body-color);
+  background-color: var(--side-nav-hover);
 }
 
 @media screen and (max-width: 550px) {
   .note-wrapper {
-    margin-left: 93px;
+    margin-left: 5.8rem;
   }
 }

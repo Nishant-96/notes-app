@@ -2,6 +2,7 @@
   min-height: 4rem;
   max-height: 10rem;
   overflow-y: auto;
+  color: var(--body-color);
 }
 
 .quill .ql-editor p img {

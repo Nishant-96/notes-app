@@ -6,8 +6,35 @@
 
 :root {
   --white: #ffffff;
+  --white-two: #f3f6f9;
   --white-gray: #f1f3f4;
   --white-shadow: #dadce0;
   --gray: #5f6368;
+  --gray-white: #b2bac2;
   --blue: #0063e5;
+  --black: #000000;
+  --black-pearl: #0a1929;
+  --black-fade: rgba(19, 47, 76, 0.8);
+}
+
+#light-mode {
+  --nav-bg-color: var(--white);
+  --nav-color: var(--gray);
+  --nav-box-shadow: var(--white-shadow);
+  --body-color: var(--black);
+  --side-nav-hover: var(--white-gray);
+  --note-input-shadow: 0 3px 5px rgb(0 0 0 / 30%);
+  --auth-wrapper-shadow: 0px 0px 0.9rem rgb(0 0 0 / 20%);
+}
+
+#dark-mode {
+  --nav-bg-color: var(--black-pearl);
+  --nav-color: var(--gray-white);
+  --nav-box-shadow: var(--blue);
+  --body-color: var(--white-two);
+  --side-nav-hover: var(--black-fade);
+  --note-input-shadow: 0px 0px 0.3rem var(--lightBlue);
+  --auth-wrapper-shadow: 0px 0px 0.9rem rgb(0 0 0 / 90%);
+  /* --gray: #5f6368;
+  --blue: #0063e5; */
 }

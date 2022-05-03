@@ -2,6 +2,7 @@ import Mockman from "mockman-js";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import { Navbar, RequireAuth } from "./components";
+import { useTheme } from "./hooks/themehook";
 import {
   Archive,
   Home,
@@ -15,10 +16,11 @@ import {
 import { Forgot } from "./pages/auth/forgot";
 
 function App() {
+  const { theme, changeTheme } = useTheme();
   return (
-    <div className="App">
-      <Navbar />
-      
+    <div className="App" id={theme}>
+      <Navbar changeTheme={changeTheme} theme={theme} />
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route
