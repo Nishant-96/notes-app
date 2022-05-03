@@ -11,7 +11,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/auth/auth-context";
 
 export function Navbar({ changeTheme, theme }) {
-  console.log(theme);
   const { token, logOutHandler } = useAuth();
   const navigate = useNavigate();
 
