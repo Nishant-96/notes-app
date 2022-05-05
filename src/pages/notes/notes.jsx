@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import "./notes.css";
 import LabelIcon from "@mui/icons-material/Label";
@@ -14,22 +14,27 @@ import { useAuth } from "../../context/auth/auth-context";
 import { postNoteEditHandler, postNotesHandler } from "../../utils";
 import { useData } from "../../context/data/data-context";
 
-const date = new Date();
-
-const initialData = {
-  _id: "",
-  noteTitle: "",
-  noteBody: "<p><br></p>",
-  backgroundColor: "#ffffff",
-  createdAt: `${date.getDate()}/${date.getMonth()}/${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`,
-  tags: [],
-  priority: "Low",
-};
-
-export function Notes() {
+export function Notes({ theme }) {
   const { token } = useAuth();
   const { state, dispatch } = useData();
+  const date = new Date();
+  const getCreationTime = () =>
+    `${date.getDate()}/${date.getMonth()}/${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+
+  const initialData = {
+    _id: "",
+    noteTitle: "",
+    noteBody: "<p><br></p>",
+    backgroundColor: `${theme === "light-mode" ? "#ffffff" : "#0a1929"}`,
+    createdAt: `${getCreationTime()}`,
+    tags: [],
+    priority: "Low",
+  };
   const [notes, setNotes] = useState(initialData);
+
+  useEffect(() => setNotes(initialData), [theme]);
+  console.log(notes);
+  console.log(state);
 
   function addNoteHandler() {
     if (notes._id !== "") {

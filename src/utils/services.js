@@ -15,7 +15,7 @@ export const postNotesHandler = async (note, token, dispatch) => {
     );
     dispatch({ type: "ADD_NOTE", payload: { value: notes } });
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };
 
@@ -36,6 +36,6 @@ export const postNoteEditHandler = async (noteId, note, token, dispatch) => {
     );
     dispatch({ type: "ADD_NOTE", payload: { value: notes } });
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };

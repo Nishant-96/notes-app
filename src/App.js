@@ -27,7 +27,7 @@ function App() {
           path="/notes"
           element={
             <RequireAuth>
-              <Notes />
+              <Notes theme={theme}/>
             </RequireAuth>
           }
         />
