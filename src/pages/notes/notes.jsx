@@ -32,7 +32,19 @@ export function Notes({ theme }) {
   };
   const [notes, setNotes] = useState(initialData);
 
-  useEffect(() => setNotes(initialData), [theme]);
+  useEffect(() => {
+    setNotes(initialData);
+    const checkOutsideClick = (e) => {
+      if (state.labelModalState || state.priorityModalState) {
+        dispatch({ type: "PRIORITY_MODAL", payload: { value: false } });
+        dispatch({ type: "LABEL_MODAL", payload: { value: false } });
+      }
+    };
+    document.addEventListener("click", checkOutsideClick);
+    return () => {
+      document.removeEventListener("click", checkOutsideClick);
+    };
+  }, [theme, state.labelModalState, state.priorityModalState]);
 
   function addNoteHandler() {
     if (notes._id !== "") {
