@@ -3,7 +3,7 @@ import React from "react";
 import "./rich-text-editor.css";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
-export function RichTextEditor() {
+export function RichTextEditor({ value, setValue }) {
   const toolbarOptions = [
     [{ size: ["small", false, "large", "huge"] }],
     ["bold", "italic", "underline", "strike"],
@@ -19,7 +19,8 @@ export function RichTextEditor() {
 
   return (
     <ReactQuill
-      // theme="snow"
+      value={value}
+      onChange={setValue}
       placeholder="Write Note here..."
       modules={modules}
     />
