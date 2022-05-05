@@ -33,8 +33,6 @@ export function Notes({ theme }) {
   const [notes, setNotes] = useState(initialData);
 
   useEffect(() => setNotes(initialData), [theme]);
-  console.log(notes);
-  console.log(state);
 
   function addNoteHandler() {
     if (notes._id !== "") {
