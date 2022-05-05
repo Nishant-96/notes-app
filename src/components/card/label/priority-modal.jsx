@@ -8,12 +8,14 @@ export function PriorityModal({ noteState, setNoteState }) {
 
   function priorityCheckHandler(event) {
     setNoteState((prev) => ({ ...prev, priority: event.target.value }));
-    dispatch({ type: "PRIORITY_MODAL", payload: { value: false } });
   }
 
   if (!state.priorityModalState) return null;
   return (
-    <div className="modal-container priority-modal">
+    <div
+      className="modal-container priority-modal"
+      onClick={(event) => event.stopPropagation()}
+    >
       <div className="modal modal-wrapper">
         <div className="modal-header priority-modal-header">
           <h3>Save To</h3>
