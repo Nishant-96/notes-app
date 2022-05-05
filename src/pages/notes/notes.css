@@ -7,10 +7,18 @@
 
 .note-wrapper {
   margin-left: 9.9rem;
-  display: flex;
-  flex-basis: calc(100vh - 76px);
-  justify-content: center;
   padding: 1rem;
+  flex-basis: calc(100vh - 76px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.note-list-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
 }
 
 .note-input-container {
@@ -20,6 +28,9 @@
   height: max-content;
   padding: 1rem 0.5rem;
   border-radius: 5px;
+  margin-inline: auto;
+  max-width: 36.25rem;
+  position: relative;
 }
 
 .note-input-container > input {
