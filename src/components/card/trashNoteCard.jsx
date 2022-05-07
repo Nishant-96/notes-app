@@ -1,19 +1,14 @@
 import React from "react";
+
 import "./notecard.css";
-import ArchiveIcon from "@mui/icons-material/Archive";
+import RestoreIcon from "@mui/icons-material/Restore";
 import DeleteIcon from "@mui/icons-material/Delete";
-import EditIcon from "@mui/icons-material/Edit";
-import { deleteNoteHandler, postArchiveNoteHandler } from "../../utils";
 import { useAuth } from "../../context/auth/auth-context";
 import { useData } from "../../context/data/data-context";
-export function NoteCard({ note, setNoteState }) {
+import { deleteTrashHandler, postRestoreTrashHandler } from "../../utils";
+export function TrashNoteCard({ note }) {
   const { token } = useAuth();
   const { dispatch } = useData();
-
-  function editClickHandler() {
-    setNoteState(note);
-  }
-
   return (
     <div
       className="card card-shadow note-card"
@@ -27,14 +22,13 @@ export function NoteCard({ note, setNoteState }) {
       <div className="note-card-footer">
         <p>{note.createdAt}</p>
         <div className="note-card-footer-icons">
-          <EditIcon onClick={editClickHandler} />
-          <ArchiveIcon
+          <RestoreIcon
             onClick={() =>
-              postArchiveNoteHandler(note._id, note, token, dispatch)
+              postRestoreTrashHandler(note._id, note, token, dispatch)
             }
           />
           <DeleteIcon
-            onClick={() => deleteNoteHandler(note._id, token, dispatch)}
+            onClick={() => deleteTrashHandler(note._id, token, dispatch)}
           />
         </div>
       </div>

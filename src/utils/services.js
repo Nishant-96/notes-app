@@ -40,6 +40,19 @@ export const postNoteEditHandler = async (noteId, note, token, dispatch) => {
   }
 };
 
+export const deleteNoteHandler = async (noteId, token, dispatch) => {
+  try {
+    const {
+      data: { notes, trash },
+    } = await axios.delete(`api/notes/${noteId}`, {
+      headers: { authorization: token },
+    });
+    dispatch({ type: "TRASH_NOTES_NOTE", payload: { notes, trash } });
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 export const postArchiveNoteHandler = async (noteId, note, token, dispatch) => {
   try {
     const {
@@ -86,11 +99,44 @@ export const postRestoreArchiveHandler = async (
 export const deleteArchiveNoteHandler = async (noteId, token, dispatch) => {
   try {
     const {
-      data: { archives },
+      data: { archives, trash },
     } = await axios.delete(`/api/archives/delete/${noteId}`, {
       headers: { authorization: token },
     });
-    dispatch({ type: "DELETE_ARCHIVE_NOTE", payload: { archives } });
+
+    dispatch({ type: "TRASH_ARCHIVE_NOTE", payload: { archives, trash } });
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const postRestoreTrashHandler = async (
+  noteId,
+  note,
+  token,
+  dispatch
+) => {
+  try {
+    const {
+      data: { trash, notes },
+    } = await axios.post(
+      `/api/trash/restore/${noteId}`,
+      { note },
+      { headers: { authorization: token } }
+    );
+    dispatch({ type: "RESTORE_TRASH_NOTE", payload: { trash, notes } });
+  } catch (error) {
+    console.error(error);
+  }
+};
+export const deleteTrashHandler = async (noteId, token, dispatch) => {
+  try {
+    const {
+      data: { trash },
+    } = await axios.delete(`/api/trash/delete/${noteId}`, {
+      headers: { authorization: token },
+    });
+    dispatch({ type: "DELETE_TRASH_NOTE", payload: { trash } });
   } catch (error) {
     console.error(error);
   }

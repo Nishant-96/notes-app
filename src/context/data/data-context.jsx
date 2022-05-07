@@ -7,6 +7,7 @@ const useData = () => useContext(DataContext);
 const initialState = {
   notesListArr: [],
   archiveListArr: [],
+  trashListArr: [],
   labelModalState: false,
   totalLabelList: [],
   priorityModalState: false,
@@ -31,6 +32,13 @@ function reducerFunction(state, action) {
     case "PRIORITY_MODAL":
       state = { ...state, priorityModalState: action.payload.value };
       break;
+    case "TRASH_NOTES_NOTE":
+      state = {
+        ...state,
+        notesListArr: action.payload.notes,
+        trashListArr: action.payload.trash,
+      };
+      break;
     case "ARCHIVE_NOTE":
       state = {
         ...state,
@@ -38,11 +46,23 @@ function reducerFunction(state, action) {
         archiveListArr: action.payload.archives,
       };
       break;
-    case "DELETE_ARCHIVE_NOTE":
+    case "TRASH_ARCHIVE_NOTE":
       state = {
         ...state,
         archiveListArr: action.payload.archives,
+        trashListArr: action.payload.trash,
       };
+      break;
+    case "RESTORE_TRASH_NOTE":
+      state = {
+        ...state,
+        notesListArr: action.payload.notes,
+        trashListArr: action.payload.trash,
+      };
+
+      break;
+    case "DELETE_TRASH_NOTE":
+      state = { ...state, trashListArr: action.payload.trash };
       break;
     default:
       break;
