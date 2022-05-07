@@ -18,12 +18,14 @@ export function LabelModal({ noteState, setNoteState }) {
       ...prev,
       tags: [...noteState.tags, event.target.value],
     }));
-    dispatch({ type: "LABEL_MODAL", payload: { value: false } });
   }
 
   if (!state.labelModalState) return null;
   return (
-    <div className="modal-container">
+    <div
+      className="modal-container"
+      onClick={(event) => event.stopPropagation()}
+    >
       <div className="modal modal-wrapper">
         <div className="modal-header">
           <h3>Save To</h3>

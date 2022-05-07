@@ -1,2 +1,7 @@
-export { postNotesHandler } from "./services";
-export { postNoteEditHandler } from "./services";
+export {
+  postNotesHandler,
+  postNoteEditHandler,
+  postArchiveNoteHandler,
+  postRestoreArchiveHandler,
+  deleteArchiveNoteHandler,
+} from "./services";

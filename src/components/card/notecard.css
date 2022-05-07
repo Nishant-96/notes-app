@@ -5,7 +5,7 @@
   color: var(--nav-color);
   min-width: 18rem;
   max-width: 25rem;
-  height: 100%;
+  height: auto;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
