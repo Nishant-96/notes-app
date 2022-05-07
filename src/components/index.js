@@ -5,3 +5,4 @@ export { RequireAuth } from "./requireAuth/requireAuth";
 export { NoteCard } from "./card/notecard.jsx";
 export { LabelModal } from "./card/label/label-modal.jsx";
 export { PriorityModal } from "./card/label/priority-modal.jsx";
+export { ArchiveNoteCard } from "./card/archiveNoteCard.jsx";

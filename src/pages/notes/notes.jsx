@@ -34,6 +34,9 @@ export function Notes({ theme }) {
 
   useEffect(() => {
     setNotes(initialData);
+  }, [theme]);
+
+  useEffect(() => {
     const checkOutsideClick = (e) => {
       if (state.labelModalState || state.priorityModalState) {
         dispatch({ type: "PRIORITY_MODAL", payload: { value: false } });
@@ -44,7 +47,7 @@ export function Notes({ theme }) {
     return () => {
       document.removeEventListener("click", checkOutsideClick);
     };
-  }, [theme, state.labelModalState, state.priorityModalState]);
+  }, [state.labelModalState, state.priorityModalState]);
 
   function addNoteHandler() {
     if (notes._id !== "") {
@@ -119,7 +122,7 @@ export function Notes({ theme }) {
         </div>
 
         <div className="note-list-wrapper">
-          {state.notesListArr.map((curr) => (
+          {[...state.notesListArr].reverse().map((curr) => (
             <NoteCard key={curr._id} note={curr} setNoteState={setNotes} />
           ))}
         </div>
