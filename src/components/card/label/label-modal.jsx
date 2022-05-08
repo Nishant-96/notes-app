@@ -17,10 +17,17 @@ export function LabelModal({ noteState, setNoteState }) {
   }
 
   function labelCheckHandler(event) {
-    setNoteState((prev) => ({
-      ...prev,
-      tags: [...noteState.tags, event.target.value],
-    }));
+    if (event.target.checked) {
+      setNoteState((prev) => ({
+        ...prev,
+        tags: [...noteState.tags, event.target.value],
+      }));
+    } else {
+      setNoteState((prev) => ({
+        ...prev,
+        tags: [...noteState.tags].filter((curr) => curr !== event.target.value),
+      }));
+    }
   }
 
   if (!state.labelModalState) return null;
