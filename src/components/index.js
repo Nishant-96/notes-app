@@ -7,3 +7,5 @@ export { LabelModal } from "./card/label/label-modal.jsx";
 export { PriorityModal } from "./card/label/priority-modal.jsx";
 export { ArchiveNoteCard } from "./card/archiveNoteCard.jsx";
 export { TrashNoteCard } from "./card/trashNoteCard.jsx";
+export { LabelPageCard } from "./card/label-page-card.jsx";
+export { LabelNoteCard } from "./card/labelNoteCard.jsx";

@@ -46,7 +46,8 @@
 .modal-button:hover {
   filter: none;
   background-color: transparent;
-  transition: ease-in 0.5s;
+  color: var(--blue);
+  transition: ease-in 0.4s;
 }
 
 .modal-body {
