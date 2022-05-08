@@ -39,6 +39,35 @@
   padding: 2px 4px;
 }
 
+/* label page card */
+.label-page-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  flex-basis: 12.5rem;
+}
+.label-page-card-header {
+  display: flex;
+  gap: 0.5rem;
+}
+.label-page-card-header > span {
+  width: 2px;
+  height: 1.5rem;
+  background-color: var(--label-bar);
+}
+
+.label-page-card-body {
+  display: flex;
+  padding-inline: 1.5rem;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.label-page-card-body > h4 {
+  margin-inline: auto;
+  color: var(--nav-color);
+}
+
 @media screen and (max-width: 850px) {
   .note-card {
     width: 100%;

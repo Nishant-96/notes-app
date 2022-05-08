@@ -7,7 +7,7 @@ export function LabelModal({ noteState, setNoteState }) {
   const [label, setLabel] = useState({ name: "" });
 
   function labelCreateHandler() {
-    if (!state.totalLabelList.includes(label.name)) {
+    if (label.name !== "" && !state.totalLabelList.includes(label.name)) {
       dispatch({ type: "LABEL_LIST_ARR", payload: { value: label.name } });
     }
     setLabel((prev) => ({ ...prev, name: "" }));
