@@ -29,6 +29,15 @@ function reducerFunction(state, action) {
         totalLabelList: [...state.totalLabelList, action.payload.value],
       };
       break;
+    case "REMOVE_FROM_LABEL_LIST":
+      console.log(action.payload.value);
+      state = {
+        ...state,
+        totalLabelList: [...state.totalLabelList].filter(
+          (curr) => curr !== action.payload.value
+        ),
+      };
+      break;
     case "PRIORITY_MODAL":
       state = { ...state, priorityModalState: action.payload.value };
       break;
@@ -67,7 +76,7 @@ function reducerFunction(state, action) {
     default:
       break;
   }
-
+  console.log(state);
   return state;
 }
 

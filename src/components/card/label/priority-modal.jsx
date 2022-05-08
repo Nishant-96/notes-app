@@ -5,7 +5,6 @@ import CloseIcon from "@mui/icons-material/Close";
 import { useData } from "../../../context/data/data-context";
 export function PriorityModal({ noteState, setNoteState }) {
   const { state, dispatch } = useData();
-
   function priorityCheckHandler(event) {
     setNoteState((prev) => ({ ...prev, priority: event.target.value }));
   }
@@ -33,6 +32,7 @@ export function PriorityModal({ noteState, setNoteState }) {
                 id={curr}
                 value={curr}
                 type="radio"
+                checked={curr === noteState.priority}
                 onChange={priorityCheckHandler}
               />
               {curr}

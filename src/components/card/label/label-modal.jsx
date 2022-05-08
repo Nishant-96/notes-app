@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+
 import "./label.css";
 import CloseIcon from "@mui/icons-material/Close";
+import ClearIcon from "@mui/icons-material/Clear";
+
 import { useData } from "../../../context/data/data-context";
 export function LabelModal({ noteState, setNoteState }) {
   const { state, dispatch } = useData();
@@ -37,16 +40,29 @@ export function LabelModal({ noteState, setNoteState }) {
         </div>
         <div className="modal-body">
           {state.totalLabelList.map((curr, index) => (
-            <label key={index}>
-              <input
-                name="playlist-list"
-                id={curr}
-                value={curr}
-                type="radio"
-                onChange={labelCheckHandler}
-              />
-              {curr}
-            </label>
+            <div key={index} className="modal-body-label">
+              <label>
+                <input
+                  name="playlist-list"
+                  id={curr}
+                  value={curr}
+                  type="checkbox"
+                  checked={noteState.tags.includes(curr)}
+                  onChange={labelCheckHandler}
+                />
+                {curr}
+              </label>
+              <div
+                onClick={() =>
+                  dispatch({
+                    type: "REMOVE_FROM_LABEL_LIST",
+                    payload: { value: curr },
+                  })
+                }
+              >
+                <ClearIcon />
+              </div>
+            </div>
           ))}
 
           <div className="modal-body-creater">
