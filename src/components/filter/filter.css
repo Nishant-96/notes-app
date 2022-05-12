@@ -1,0 +1,39 @@
+.filter {
+  display: flex;
+  padding: 1.5rem 1rem;
+  box-shadow: var(--auth-wrapper-shadow);
+  gap: 1rem;
+  flex-direction: column;
+
+  position: absolute;
+  top: 100%;
+  right: 10%;
+  background-color: var(--nav-bg-color);
+  max-width: max-content;
+  min-width: 20rem;
+  color: var(--nav-color);
+}
+
+.filter-wrapper {
+  display: flex;
+  gap: 1rem;
+}
+
+.filter-left,
+.filter-right {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.filter-left > div,
+.filter-right > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.filter-left > div > h4,
+.filter-right > div > h4 {
+  border-bottom: 2px solid;
+}

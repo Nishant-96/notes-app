@@ -50,7 +50,7 @@ export function LabelModal({ noteState, setNoteState }) {
             <div key={index} className="modal-body-label">
               <label>
                 <input
-                  name="playlist-list"
+                  name="label-list"
                   id={curr}
                   value={curr}
                   type="checkbox"

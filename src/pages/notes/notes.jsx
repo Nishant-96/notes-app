@@ -38,16 +38,21 @@ export function Notes({ theme }) {
 
   useEffect(() => {
     const checkOutsideClick = (e) => {
-      if (state.labelModalState || state.priorityModalState) {
+      if (
+        state.labelModalState ||
+        state.priorityModalState ||
+        state.filterModalState
+      ) {
         dispatch({ type: "PRIORITY_MODAL", payload: { value: false } });
         dispatch({ type: "LABEL_MODAL", payload: { value: false } });
+        dispatch({ type: "FILTER_MODAL", payload: { value: false } });
       }
     };
     document.addEventListener("click", checkOutsideClick);
     return () => {
       document.removeEventListener("click", checkOutsideClick);
     };
-  }, [state.labelModalState, state.priorityModalState]);
+  }, [state.labelModalState, state.filterModalState, state.priorityModalState]);
 
   function addNoteHandler() {
     if (notes._id !== "") {
@@ -122,7 +127,7 @@ export function Notes({ theme }) {
         </div>
 
         <div className="note-list-wrapper">
-          {[...state.notesListArr].reverse().map((curr) => (
+          {[...state.filterNotesList].reverse().map((curr) => (
             <NoteCard key={curr._id} note={curr} setNoteState={setNotes} />
           ))}
         </div>
