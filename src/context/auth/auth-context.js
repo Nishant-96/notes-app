@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
-
+import { toast } from "react-toastify";
 const AuthContext = createContext();
 const useAuth = () => useContext(AuthContext);
 
@@ -32,9 +32,27 @@ function AuthProvider({ children }) {
         navigate(location?.state?.from?.pathname || "/", {
           replace: true,
         });
+        toast.success(`Welcome, ${foundUser.firstName}`, {
+          position: "top-right",
+          autoClose: 1500,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
       }
     } catch (error) {
       console.log(error);
+      toast.error(`Login Error !`, {
+        position: "top-right",
+        autoClose: 1500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
   };
 
@@ -44,6 +62,15 @@ function AuthProvider({ children }) {
       token: "",
     });
     localStorage.removeItem("AUTHENTICATION");
+    toast.success(`Logged Out`, {
+      position: "top-right",
+      autoClose: 1500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
     navigate("/");
   };
 
@@ -58,6 +85,7 @@ function AuthProvider({ children }) {
         const response = await axios.post("/api/auth/signup", {
           email,
           password,
+          name,
         });
         if (response.status === 201) {
           const {
@@ -71,13 +99,31 @@ function AuthProvider({ children }) {
               token: encodedToken,
             })
           );
+          toast.success(`Welcome, ${createdUser.name}`, {
+            position: "top-right",
+            autoClose: 1500,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
           navigate("/");
         }
       } else {
         throw new Error("Invalid InputCredenitial");
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
+      toast.error(`Signup Error !`, {
+        position: "top-right",
+        autoClose: 1500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
   };
 
@@ -90,7 +136,6 @@ function AuthProvider({ children }) {
       });
     }
   }, []);
-
 
   return (
     <AuthContext.Provider
