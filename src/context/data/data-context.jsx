@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useReducer } from "react";
+import { labelFilter, priorityFilter, sortingFilter } from "../../utils";
 
 const DataContext = createContext();
 
@@ -20,13 +21,11 @@ const initialState = {
   filterNotesList: [],
   searchInput: "",
   searchedNotesList: [],
+  apiCallFlag: false,
 };
 
 function reducerFunction(state, action) {
   switch (action.type) {
-    case "ADD_NOTE":
-      state = { ...state, notesListArr: action.payload.value };
-      break;
     case "LABEL_MODAL":
       state = { ...state, labelModalState: action.payload.value };
       break;
@@ -47,38 +46,6 @@ function reducerFunction(state, action) {
       break;
     case "PRIORITY_MODAL":
       state = { ...state, priorityModalState: action.payload.value };
-      break;
-    case "TRASH_NOTES_NOTE":
-      state = {
-        ...state,
-        notesListArr: action.payload.notes,
-        trashListArr: action.payload.trash,
-      };
-      break;
-    case "ARCHIVE_NOTE":
-      state = {
-        ...state,
-        notesListArr: action.payload.notes,
-        archiveListArr: action.payload.archives,
-      };
-      break;
-    case "TRASH_ARCHIVE_NOTE":
-      state = {
-        ...state,
-        archiveListArr: action.payload.archives,
-        trashListArr: action.payload.trash,
-      };
-      break;
-    case "RESTORE_TRASH_NOTE":
-      state = {
-        ...state,
-        notesListArr: action.payload.notes,
-        trashListArr: action.payload.trash,
-      };
-
-      break;
-    case "DELETE_TRASH_NOTE":
-      state = { ...state, trashListArr: action.payload.trash };
       break;
     case "FILTER_MODAL":
       state = { ...state, filterModalState: action.payload.value };
@@ -132,6 +99,18 @@ function reducerFunction(state, action) {
         ),
       };
       break;
+    case "API_FLAG_TOGGLE":
+      state = { ...state, apiCallFlag: !state.apiCallFlag };
+      break;
+    case "GET_NOTES":
+      state = { ...state, notesListArr: action.payload.value };
+      break;
+    case "GET_TRASH":
+      state = { ...state, trashListArr: action.payload.value };
+      break;
+    case "GET_ARCHIVE":
+      state = { ...state, archiveListArr: action.payload.value };
+      break;
     default:
       break;
   }
@@ -170,57 +149,6 @@ function reducerFunction(state, action) {
   }
 
   return state;
-}
-
-function labelFilter(state, labelList) {
-  return [...state.filterNotesList].filter((curr) => {
-    for (let i = 0; i < labelList.length; i++) {
-      if (curr.tags.includes(labelList[i])) {
-        return curr;
-      }
-    }
-    return null;
-  });
-}
-
-function priorityFilter(state, priorityList) {
-  return [...state.filterNotesList].filter((curr) => {
-    for (let i = 0; i < priorityList.length; i++) {
-      if (curr.priority === priorityList[i]) {
-        return curr;
-      }
-    }
-    return null;
-  });
-}
-
-function sortingFilter(state, condition) {
-  const priorityMap = { low: 1, medium: 2, high: 3 };
-  switch (condition) {
-    case "newest":
-      return [...state.filterNotesList].sort((a, b) => {
-        return new Date(a.createdAt) - new Date(b.createdAt);
-      });
-    case "oldest":
-      return [...state.filterNotesList].sort((a, b) => {
-        return new Date(b.createdAt) - new Date(a.createdAt);
-      });
-    case "high-to-low":
-      return [...state.filterNotesList].sort(
-        (a, b) =>
-          priorityMap[a.priority.toLowerCase()] -
-          priorityMap[b.priority.toLowerCase()]
-      );
-
-    case "low-to-high":
-      return [...state.filterNotesList].sort(
-        (a, b) =>
-          priorityMap[b.priority.toLowerCase()] -
-          priorityMap[a.priority.toLowerCase()]
-      );
-    default:
-      break;
-  }
 }
 
 function DataProvider({ children }) {

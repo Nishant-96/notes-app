@@ -8,3 +8,7 @@ export {
   postRestoreTrashHandler,
   deleteTrashHandler,
 } from "./services";
+
+export { sortingFilter } from "./sortingFilter";
+export { priorityFilter } from "./priorityFilter";
+export { labelFilter } from "./labelFilter";
