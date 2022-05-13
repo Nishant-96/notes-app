@@ -9,3 +9,5 @@ export { ArchiveNoteCard } from "./card/archiveNoteCard.jsx";
 export { TrashNoteCard } from "./card/trashNoteCard.jsx";
 export { LabelPageCard } from "./card/label-page-card.jsx";
 export { LabelNoteCard } from "./card/labelNoteCard.jsx";
+export { FilterCard } from "./filter/filter.jsx";
+export { Toast } from "./toast/toast.jsx";

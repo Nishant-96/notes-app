@@ -10,7 +10,6 @@ export function SignUp() {
     password: "",
     confirmPass: "",
   });
-  console.log(userCredentials);
   return (
     <div className="notes">
       <div className="login-wrapper">

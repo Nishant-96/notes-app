@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useReducer } from "react";
+import { labelFilter, priorityFilter, sortingFilter } from "../../utils";
 
 const DataContext = createContext();
 
@@ -11,14 +12,20 @@ const initialState = {
   labelModalState: false,
   totalLabelList: [],
   priorityModalState: false,
+  filterModalState: false,
   totalPriorityList: ["Low", "Medium", "High"],
+  selectedPrioritySort: null,
+  selectedTimeSort: null,
+  selectedPriority: [],
+  selectedLabels: [],
+  filterNotesList: [],
+  searchInput: "",
+  searchedNotesList: [],
+  apiCallFlag: false,
 };
 
 function reducerFunction(state, action) {
   switch (action.type) {
-    case "ADD_NOTE":
-      state = { ...state, notesListArr: action.payload.value };
-      break;
     case "LABEL_MODAL":
       state = { ...state, labelModalState: action.payload.value };
       break;
@@ -29,43 +36,116 @@ function reducerFunction(state, action) {
         totalLabelList: [...state.totalLabelList, action.payload.value],
       };
       break;
+    case "REMOVE_FROM_LABEL_LIST":
+      state = {
+        ...state,
+        totalLabelList: [...state.totalLabelList].filter(
+          (curr) => curr !== action.payload.value
+        ),
+      };
+      break;
     case "PRIORITY_MODAL":
       state = { ...state, priorityModalState: action.payload.value };
       break;
-    case "TRASH_NOTES_NOTE":
+    case "FILTER_MODAL":
+      state = { ...state, filterModalState: action.payload.value };
+      break;
+    case "PRIORITY_SORTING_FILTER":
+      state = { ...state, selectedPrioritySort: action.payload.value };
+      break;
+    case "TIME_SORTING_FILTER":
+      state = { ...state, selectedTimeSort: action.payload.value };
+      break;
+    case "PRIORITY_FILTERING_FILTER":
       state = {
         ...state,
-        notesListArr: action.payload.notes,
-        trashListArr: action.payload.trash,
+        selectedPriority: action.payload.checked
+          ? [...state.selectedPriority, action.payload.value]
+          : [...state.selectedPriority].filter(
+              (curr) => curr !== action.payload.value
+            ),
       };
       break;
-    case "ARCHIVE_NOTE":
+    case "LABEL_FILTERING_FILTER":
       state = {
         ...state,
-        notesListArr: action.payload.notes,
-        archiveListArr: action.payload.archives,
+        selectedLabels: action.payload.checked
+          ? [...state.selectedLabels, action.payload.value]
+          : [...state.selectedLabels].filter(
+              (curr) => curr !== action.payload.value
+            ),
       };
       break;
-    case "TRASH_ARCHIVE_NOTE":
+    case "CLEAR_FILTER":
       state = {
         ...state,
-        archiveListArr: action.payload.archives,
-        trashListArr: action.payload.trash,
+        selectedPrioritySort: null,
+        selectedTimeSort: null,
+        selectedPriority: [],
+        selectedLabels: [],
+        filterNotesList: [...state.notesListArr],
       };
       break;
-    case "RESTORE_TRASH_NOTE":
+    case "SET_SEARCH_INPUT":
+      state = { ...state, searchInput: action.payload.value };
+      break;
+    case "SEARCH_NOTE":
       state = {
         ...state,
-        notesListArr: action.payload.notes,
-        trashListArr: action.payload.trash,
+        searchedNotesList: [...state.notesListArr].filter((curr) =>
+          curr.noteTitle
+            .toLowerCase()
+            .includes(action.payload.value.toLowerCase())
+        ),
       };
-
       break;
-    case "DELETE_TRASH_NOTE":
-      state = { ...state, trashListArr: action.payload.trash };
+    case "API_FLAG_TOGGLE":
+      state = { ...state, apiCallFlag: !state.apiCallFlag };
+      break;
+    case "GET_NOTES":
+      state = { ...state, notesListArr: action.payload.value };
+      break;
+    case "GET_TRASH":
+      state = { ...state, trashListArr: action.payload.value };
+      break;
+    case "GET_ARCHIVE":
+      state = { ...state, archiveListArr: action.payload.value };
       break;
     default:
       break;
+  }
+
+  state = { ...state, filterNotesList: [...state.notesListArr] };
+
+  if (state.searchedNotesList.length > 0) {
+    state = { ...state, filterNotesList: [...state.searchedNotesList] };
+  }
+
+  if (state.selectedTimeSort) {
+    state = {
+      ...state,
+      filterNotesList: sortingFilter(state, state.selectedTimeSort),
+    };
+  }
+  if (state.selectedPrioritySort) {
+    state = {
+      ...state,
+      filterNotesList: sortingFilter(state, state.selectedPrioritySort),
+    };
+  }
+
+  if (state.selectedPriority.length > 0) {
+    state = {
+      ...state,
+      filterNotesList: priorityFilter(state, state.selectedPriority),
+    };
+  }
+
+  if (state.selectedLabels.length > 0) {
+    state = {
+      ...state,
+      filterNotesList: labelFilter(state, state.selectedLabels),
+    };
   }
 
   return state;

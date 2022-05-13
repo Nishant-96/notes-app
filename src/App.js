@@ -1,7 +1,7 @@
 import Mockman from "mockman-js";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import { Navbar, RequireAuth } from "./components";
+import { Navbar, RequireAuth, Toast } from "./components";
 import { useTheme } from "./hooks/themehook";
 import {
   Archive,
@@ -20,14 +20,14 @@ function App() {
   return (
     <div className="App" id={theme}>
       <Navbar changeTheme={changeTheme} theme={theme} />
-
+      <Toast theme={theme} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route
           path="/notes"
           element={
             <RequireAuth>
-              <Notes theme={theme}/>
+              <Notes theme={theme} />
             </RequireAuth>
           }
         />

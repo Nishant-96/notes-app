@@ -1,9 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
+import axios from "axios";
 import { LabelPageCard, SideNav } from "../../components";
 import { useData } from "../../context/data/data-context";
+import { useAuth } from "../../context/auth/auth-context";
 import "./label.css";
 export function Label() {
-  const { state } = useData();
+  const { state, dispatch } = useData();
+  const { token } = useAuth();
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const {
+          data: { notes },
+        } = await axios.get(`/api/notes`, {
+          headers: { authorization: token },
+        });
+        dispatch({ type: "GET_NOTES", payload: { value: notes } });
+      } catch (error) {
+        console.error(error);
+      }
+    })();
+  }, [state.apiCallFlag, token]);
 
   return (
     <div className="notes">
