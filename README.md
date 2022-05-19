@@ -1,70 +1,86 @@
-# Getting Started with Create React App
+<div align="center">
+  <img src="/public/Assets/notemate1.png" height="100" width="100" alt="Robyn Tube Logo"/>
+  
+# [NoteMate](https://notesmate.netlify.app/)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+</div>
+<br/>
 
-## Available Scripts
+## **Table of contents**
 
-In the project directory, you can run:
+- [Overview](#overview)
+  - [How to run ?](#how-to-install-and-run-locally-?)
+  - [Pages & Features](#pages&features)
+ 
 
-### `yarn start`
+- [Tech]()
+  - [Tech Stack](#tech-stack)
+  - [Resources](#resources)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<br />
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## **Overview**
 
-### `yarn test`
+<br />
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+NoteMate is an notes web app alternative of google keep which you can use to jot down important pieces of ideas, lists anything that is of importance to you anytime. 
+<br />
 
-### `yarn build`
+### **How to Install and Run Locally ?**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+$ git clone https://github.com/Nishant-96/notes-app.git
+$ npm install
+$ npm start
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### **Pages & Features**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<br />
 
-### `yarn eject`
+- [Home Page](https://notesmate.netlify.app/)
+- Notes Page
+  - Add Note
+  - Add Label and Priority to notes
+  - View Note
+  - Give NoteCard Color
+  - Edit Note 
+  - Archive Note
+  - Trash Note 
+  - Search Notes
+  - Filter and Sort Notes by Priority, Time and Label.
+  - Rich Text Editor
+- Archive Page 
+  - Restore note from archive (Unarchive Note)
+  - Trash Note
+- Bin Page (or Trash Page)
+  - Restore from trash
+  - Permanently delete note.
+- Label Page
+  - User can view all Labels created here and all the notes present in it. if a particular label is empty it will show emplty.
+  - This labels can be deleted from the note creation component in the notes page by clicking on the cross against the particular label in the label modal. 
+- Supports Light and Dark.
+<br />
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## **Demo**
+![NoteMate](https://user-images.githubusercontent.com/87017414/169353624-02ace8c3-1d5d-4606-97ec-eacb08e1ce38.gif)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### **Tech Stack**
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- React JS
+- CSS3 along with component library [Robyn UI](https://robyn-ui.netlify.app/)
+- Flexbox Layout
+- React Context API + useReducer
+- React Router v6
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<br />
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### **Resources**
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [Material UI Icons](https://mui.com/components/material-icons/)
+- [Google font](https://fonts.google.com/)
+- Google Keep
+- Evernote
+- React Quill
