@@ -43,8 +43,8 @@ function AuthProvider({ children }) {
         });
       }
     } catch (error) {
-      console.log(error);
-      toast.error(`Login Error !`, {
+      console.error();
+      toast.error(`Login Error ! ${error.response.data.errors[0]}`, {
         position: "top-right",
         autoClose: 1500,
         hideProgressBar: false,
@@ -76,42 +76,33 @@ function AuthProvider({ children }) {
 
   const signUpHandler = async (email, name, password, confirmPass) => {
     try {
-      if (
-        email !== "" &&
-        name !== "" &&
-        password !== "" &&
-        password === confirmPass
-      ) {
-        const response = await axios.post("/api/auth/signup", {
-          email,
-          password,
-          name,
+      const response = await axios.post("/api/auth/signup", {
+        email,
+        password,
+        name,
+      });
+      if (response.status === 201) {
+        const {
+          data: { createdUser, encodedToken },
+        } = response;
+        setUserState({ userDetails: createdUser, token: encodedToken });
+        localStorage.setItem(
+          "AUTHENTICATION",
+          JSON.stringify({
+            userDetails: createdUser,
+            token: encodedToken,
+          })
+        );
+        toast.success(`Welcome, ${createdUser.name}`, {
+          position: "top-right",
+          autoClose: 1500,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
         });
-        if (response.status === 201) {
-          const {
-            data: { createdUser, encodedToken },
-          } = response;
-          setUserState({ userDetails: createdUser, token: encodedToken });
-          localStorage.setItem(
-            "AUTHENTICATION",
-            JSON.stringify({
-              userDetails: createdUser,
-              token: encodedToken,
-            })
-          );
-          toast.success(`Welcome, ${createdUser.name}`, {
-            position: "top-right",
-            autoClose: 1500,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
-          navigate("/");
-        }
-      } else {
-        throw new Error("Invalid InputCredenitial");
+        navigate("/");
       }
     } catch (error) {
       console.error(error);

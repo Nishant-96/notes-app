@@ -11,7 +11,7 @@ export function NoteCard({ note, setNoteState }) {
   const { dispatch } = useData();
 
   function editClickHandler() {
-    setNoteState(note);
+    setNoteState({ ...note, editStatus: true });
   }
 
   return (
