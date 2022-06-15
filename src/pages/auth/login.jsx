@@ -19,7 +19,6 @@ export function Login() {
         throw new Error(validation.message);
       }
     } catch (error) {
-      console.error(error.message);
       toast.error(`${error.message}`, {
         position: "top-right",
         autoClose: 1500,

@@ -43,7 +43,7 @@ function AuthProvider({ children }) {
         });
       }
     } catch (error) {
-      console.error();
+      console.error(error);
       toast.error(`Login Error ! ${error.response.data.errors[0]}`, {
         position: "top-right",
         autoClose: 1500,
