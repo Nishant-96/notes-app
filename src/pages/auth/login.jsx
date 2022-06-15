@@ -10,7 +10,6 @@ export function Login() {
     email: "",
     password: "",
   });
-
   const loginCLickHandler = (userDetails) => {
     const validation = formValidationLogin({ ...userDetails });
     try {
