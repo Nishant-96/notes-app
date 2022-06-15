@@ -12,3 +12,5 @@ export {
 export { sortingFilter } from "./sortingFilter";
 export { priorityFilter } from "./priorityFilter";
 export { labelFilter } from "./labelFilter";
+export { formValidationSignUp } from "./validation";
+export { formValidationLogin } from "./validation";

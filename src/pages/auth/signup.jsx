@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import { useAuth } from "../../context/auth/auth-context";
+import { formValidationSignUp } from "../../utils";
 import "./auth.css";
 export function SignUp() {
   const { signUpHandler } = useAuth();
@@ -10,6 +12,34 @@ export function SignUp() {
     password: "",
     confirmPass: "",
   });
+
+  const signUpClickHandler = (userDetails) => {
+    const validation = formValidationSignUp({ ...userDetails });
+    try {
+      if (validation.type) {
+        signUpHandler(
+          userDetails.email,
+          userDetails.userName,
+          userDetails.password,
+          userDetails.confirmPass
+        );
+      } else {
+        throw new Error(validation.message);
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error(`${error.message}`, {
+        position: "top-right",
+        autoClose: 1500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+  };
+
   return (
     <div className="notes">
       <div className="login-wrapper">
@@ -77,14 +107,7 @@ export function SignUp() {
             </label>
             <button
               className="btn btn-primary auth-btn"
-              onClick={() =>
-                signUpHandler(
-                  userCredentials.email,
-                  userCredentials.userName,
-                  userCredentials.password,
-                  userCredentials.confirmPass
-                )
-              }
+              onClick={() => signUpClickHandler(userCredentials)}
             >
               Sign Up
             </button>

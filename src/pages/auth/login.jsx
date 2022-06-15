@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import { useAuth } from "../../context/auth/auth-context";
+import { formValidationLogin } from "../../utils";
 import "./auth.css";
 export function Login() {
   const { loginHandler } = useAuth();
@@ -8,6 +10,27 @@ export function Login() {
     email: "",
     password: "",
   });
+  const loginCLickHandler = (userDetails) => {
+    const validation = formValidationLogin({ ...userDetails });
+    try {
+      if (validation.type) {
+        loginHandler(userDetails.email, userDetails.password);
+      } else {
+        throw new Error(validation.message);
+      }
+    } catch (error) {
+      toast.error(`${error.message}`, {
+        position: "top-right",
+        autoClose: 1500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+  };
+
   return (
     <div className="notes auth">
       <div className="login-wrapper">
@@ -47,13 +70,10 @@ export function Login() {
                 <input type="checkbox" />
                 Remember Me
               </label>
-              <Link to="/forgot-password">Forgot Your Password ?</Link>
             </div>
             <button
               className="btn btn-primary auth-btn"
-              onClick={() =>
-                loginHandler(userCredentials.email, userCredentials.password)
-              }
+              onClick={() => loginCLickHandler(userCredentials)}
             >
               Login
             </button>

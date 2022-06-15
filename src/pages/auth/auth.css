@@ -16,7 +16,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: max-content;
+  min-width: 27rem;
   max-width: 35rem;
   box-shadow: var(--auth-wrapper-shadow);
   padding: 2rem;

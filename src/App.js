@@ -13,7 +13,7 @@ import {
   SignUp,
   Trash,
 } from "./pages";
-import { Forgot } from "./pages/auth/forgot";
+
 
 function App() {
   const { theme, changeTheme } = useTheme();
@@ -57,7 +57,6 @@ function App() {
         />
         <Route path="/login" element={<Login />} />
         <Route path="/sign-up" element={<SignUp />} />
-        <Route path="/forgot-password" element={<Forgot />} />
         <Route path="*" element={<PageNotFound />} />
         <Route path="/mockman" element={<Mockman />} />
       </Routes>

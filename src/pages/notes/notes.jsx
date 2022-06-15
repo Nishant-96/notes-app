@@ -30,6 +30,7 @@ export function Notes({ theme }) {
     createdAt: `${getCreationTime()}`,
     tags: [],
     priority: "Low",
+    editStatus: false,
   };
   const [notes, setNotes] = useState(initialData);
 
@@ -147,7 +148,7 @@ export function Notes({ theme }) {
                 addNoteHandler();
               }}
             >
-              Add Note
+              {notes.editStatus ? "Update Note" : "Add Note"}
             </div>
           </div>
         </div>
